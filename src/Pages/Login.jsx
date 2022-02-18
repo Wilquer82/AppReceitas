@@ -70,7 +70,7 @@ export default function Login() {
           data-testid="login-submit-btn"
           type="button"
           disabled={ disabled }
-          onClick={ setToLocalStorage }
+          onClick={ () => { setToLocalStorage(); } }
           variant="outline-success"
         >
           Entrar
