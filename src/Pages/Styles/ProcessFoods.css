@@ -1,0 +1,15 @@
+body {
+  background-color: white;
+}
+
+.start-recipe-btn:disabled {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.start-recipe-btn:enabled {
+  background-color: salmon;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 10px 85px;
+}

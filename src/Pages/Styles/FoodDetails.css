@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+}
+
+.img-recipe {
+  border: 2px solid black;
+  width: 100%;
+}
+
+.recommended {
+  border: 2px solid black;
+  width: 100%;
+}
+
+.start-recipe-btn {
+  background-color: #f4511e;
+  border: none;
+  border-radius: 5px;
+  bottom: 0;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 25px;
+  margin-left: center;
+  margin-right: center;
+  opacity: 0.6;
+  padding: 16px 90px;
+  position: fixed;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.start-recipe-btn:hover {
+  opacity: 1;
+}

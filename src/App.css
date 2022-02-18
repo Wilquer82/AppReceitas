@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap') ;
+
+* {
+  max-height: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+
+.title {
+  color: aliceblue;
+  font-family: MonteCarlo , cursive;
+  font-weight: 700;
+  margin-top: 4vh;
+  text-align: center;
+  text-shadow: 2px 2px black;
+}
+

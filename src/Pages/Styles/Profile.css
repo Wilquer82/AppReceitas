@@ -1,0 +1,49 @@
+* {
+  text-align: center;
+}
+
+.perfilpage {
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  float: inline-start;
+  height: 360px;
+  justify-content: center;
+  margin-top: 20%;
+  vertical-align: center;
+}
+
+.button-one {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  position: relative;
+  text-align: center;
+  width: 200px;
+}
+
+.button-two {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  position: relative;
+  text-align: center;
+  width: 200px;
+}
+
+.button-three {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  position: relative;
+  text-align: center;
+  width: 200px;
+}

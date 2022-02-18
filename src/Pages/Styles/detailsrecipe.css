@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+}
+
+.img-recipe {
+  border: 2px solid black;
+  width: 100%;
+}
+
+.recommended {
+  border: 2px solid black;
+  width: 100%;
+}
+
+.start-recipe-btn {
+  bottom: 0;
+  position: fixed;
+}

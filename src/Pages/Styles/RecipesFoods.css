@@ -1,0 +1,40 @@
+.searchbar {
+  background-color: azure;
+  box-sizing: content-box;
+  display: flexbox;
+  height: 60px;
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  z-index: 1;
+}
+
+.link {
+  box-shadow: 1px , 1px;
+  color: black;
+  text-decoration: none;
+}
+
+input {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.cardlist {
+  background-image: linear-gradient(to bottom, salmon, white, salmon);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding-bottom: 45px;
+  top: 0;
+}
+
+.foodimg {
+  height: 150px;
+  width: auto;
+}
+
+section {
+  margin: 5px;
+}
