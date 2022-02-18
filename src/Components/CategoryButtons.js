@@ -74,7 +74,7 @@ export default function CategoryButtons() {
     fetchCategoryMeal();
     fetchCategoryDrink();
     chooseFood();
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     if (!search) {

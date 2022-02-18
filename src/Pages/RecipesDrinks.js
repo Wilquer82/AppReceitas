@@ -21,7 +21,7 @@ export default function RecipesDrinks() {
     if (drink.length === 0) {
       getDrink();
     }
-  }, []);
+  }, [drink]);
 
   return (
     <div>

@@ -22,7 +22,7 @@ export default function RecipesFoods() {
     if (food.length === 0) {
       getFood();
     }
-  }, []);
+  }, [food]);
 
   return (
     <div>
