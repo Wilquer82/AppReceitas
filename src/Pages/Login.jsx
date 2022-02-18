@@ -36,7 +36,7 @@ export default function Login() {
       <video
         width="360px"
         height="640px"
-        playsinline
+        playsInline
         autoPlay
         muted
         loop
