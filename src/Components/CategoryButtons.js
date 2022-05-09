@@ -1,36 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, memo } from 'react';
 import { useHistory } from 'react-router-dom';
 import MyContext from '../Context/MyContext';
+import './CategoryButtons.css';
 
-export default function CategoryButtons() {
+const CategoryButtons = () => {
   const { setFood, setDrink, search, setSearch } = useContext(MyContext);
   const [category, setCategory] = useState([]);
   const history = useHistory();
   const { pathname } = history.location;
   const [toggle, setToggle] = useState('');
-
-  const fetchCategoryMeal = async () => {
-    const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
-    const result = await fetch(URL);
-    const { meals } = await result.json();
-    if (meals.length) history.push(/comidas/);
-    setCategory(meals);
-  };
-
-  const fetchCategoryDrink = async () => {
-    const URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
-    const result = await fetch(URL);
-    const { drinks } = await result.json();
-    if (drinks.length) history.push(/bebidas/);
-    setCategory(drinks);
-  };
-
-  function chooseFood() {
-    if (pathname === '/bebidas') {
-      return fetchCategoryDrink();
-    }
-    return fetchCategoryMeal();
-  }
 
   const categoryFilter = async (strCategory) => {
     if (pathname === '/bebidas') {
@@ -59,8 +37,35 @@ export default function CategoryButtons() {
       setFood(categories.meals);
     }
   };
+  const fetchCategoryMeal = async () => {
+    const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+    const result = await fetch(URL);
+    const { meals } = await result.json();
+    console.log(meals);
+    if (meals.length) {
+      history.push(/comidas/);
+      setCategory(meals);
+    }
+  };
+  const fetchCategoryDrink = async () => {
+    const URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+    const result = await fetch(URL);
+    const { drinks } = await result.json();
+    console.log(drinks);
+    if (drinks.length) {
+      history.push(/bebidas/);
+      setCategory(drinks);
+    }
+  };
 
-  function toggleCategory({ target }) {
+  const chooseFood = () => {
+    if (pathname === '/bebidas') {
+      return fetchCategoryDrink();
+    }
+    return fetchCategoryMeal();
+  };
+
+  const toggleCategory = ({ target }) => {
     if (toggle === target.name) {
       setToggle('');
       setSearch(false);
@@ -68,13 +73,13 @@ export default function CategoryButtons() {
       setToggle(target.name);
       setSearch(false);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchCategoryMeal();
-    fetchCategoryDrink();
+    // fetchCategoryMeal();
+    // fetchCategoryDrink();
     chooseFood();
-  }, [category]);
+  }, []);
 
   useEffect(() => {
     if (!search) {
@@ -89,8 +94,9 @@ export default function CategoryButtons() {
   const maxList = 5;
 
   return (
-    <div>
+    <div className="container">
       <button
+        className="category"
         id="btn-all"
         type="button"
         data-testid="All-category-filter"
@@ -102,16 +108,19 @@ export default function CategoryButtons() {
         index < maxList && (
           <label htmlFor={ `${strCategory}${index}` } key={ index }>
             <button
+              className="category"
               type="button"
               data-testid={ `${strCategory}-category-filter` }
               name={ strCategory }
               onClick={ (e) => toggleCategory(e) }
             >
-              { strCategory }
+              {strCategory}
             </button>
           </label>
         )
       ))}
     </div>
   );
-}
+};
+
+export default memo(CategoryButtons);

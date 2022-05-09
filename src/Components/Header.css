@@ -1,19 +1,19 @@
-.header {
+.headerbox {
   align-items: center;
-  background-color: salmon;
+  border: 1px groove salmon;
+  border-radius: 20px;
   display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  position: fixed;
+  height: 70px;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
-.headerbox {
-  align-items: center;
-  display: flex-box;
-  height: 60px;
+header {
+  align-items: flex-start;
+  display: flex;
+  height: 100%;
   justify-content: space-between;
-  margin: 0 auto;
   width: 100%;
 }
 
@@ -22,10 +22,33 @@
   display: flex;
 }
 
-.inputsearch {
+.searchbar {
+  background-color: salmon;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 60px;
-  z-index: 1;
+  height: 100px;
+  margin-top: 20px;
+
+  /* padding-top: 5px; */
+  position: relative;
+  top: 70px;
+  width: 100%;
 }
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+form {
+  background: salmon;
+  border-radius: 20px;
+  height: 100px;
+  padding: 10px;
+  width: 100%;
+}
+

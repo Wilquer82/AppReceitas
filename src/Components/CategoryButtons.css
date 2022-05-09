@@ -1,0 +1,21 @@
+.container {
+  background-color: salmon;
+  border: 1px groove salmon;
+  border-radius: 20px;
+  padding-top: 5px;
+  position: absolute;
+  top: 70px;
+}
+
+.category {
+  background: transparent;
+  border: 1px groove salmon;
+  border-radius: 10px;
+  color: white;
+  margin: 0 2px;
+  padding: 2px 5px;
+}
+
+.category:hover {
+  color: black;
+}
