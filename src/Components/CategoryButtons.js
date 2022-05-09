@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, memo } from 'react';
+import React, { useContext, useEffect, useState, memo, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import MyContext from '../Context/MyContext';
 import './CategoryButtons.css';
@@ -75,13 +75,7 @@ const CategoryButtons = () => {
     }
   };
 
-  useEffect(() => {
-    // fetchCategoryMeal();
-    // fetchCategoryDrink();
-    chooseFood();
-  }, [0]);
-
-  useEffect(() => {
+  const umDois = useCallback(() => {
     if (!search) {
       if (toggle !== '') {
         categoryFilter(toggle);
@@ -89,7 +83,17 @@ const CategoryButtons = () => {
         allCategories();
       }
     }
-  }, [toggle]);
+  }, [search, toggle, allCategories, categoryFilter]);
+
+  useEffect(() => {
+    // fetchCategoryMeal();
+    // fetchCategoryDrink();
+    chooseFood();
+  });
+
+  useEffect(() => {
+    umDois();
+  }, [toggle, umDois]);
 
   const maxList = 5;
 
