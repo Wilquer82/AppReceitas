@@ -79,7 +79,7 @@ const CategoryButtons = () => {
     // fetchCategoryMeal();
     // fetchCategoryDrink();
     chooseFood();
-  }, []);
+  }, [0]);
 
   useEffect(() => {
     if (!search) {
