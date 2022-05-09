@@ -10,7 +10,7 @@ const CategoryButtons = () => {
   const { pathname } = history.location;
   const [toggle, setToggle] = useState('');
 
-  const categoryFilter = async (strCategory) => {
+  const categoryFilter = useCallback((strCategory) => async () => {
     if (pathname === '/bebidas') {
       const URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${strCategory}`;
       console.log(URL);
@@ -23,8 +23,9 @@ const CategoryButtons = () => {
       const categories = await response.json();
       setFood(categories.meals);
     }
-  };
-  const allCategories = async () => {
+  }, [pathname, setDrink, setFood]);
+
+  const allCategories = useCallback(() => async () => {
     if (pathname === '/bebidas') {
       const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
       const response = await fetch(URL);
@@ -36,7 +37,7 @@ const CategoryButtons = () => {
       const categories = await response.json();
       setFood(categories.meals);
     }
-  };
+  }, [pathname, setDrink, setFood]);
   const fetchCategoryMeal = async () => {
     const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
     const result = await fetch(URL);
@@ -78,12 +79,12 @@ const CategoryButtons = () => {
   const umDois = useCallback(() => {
     if (!search) {
       if (toggle !== '') {
-        categoryFilter(toggle);
+        memo(categoryFilter(toggle));
       } else {
-        allCategories();
+        memo(allCategories());
       }
     }
-  }, [search, toggle, allCategories, categoryFilter]);
+  }, [search, toggle, categoryFilter, allCategories]);
 
   useEffect(() => {
     // fetchCategoryMeal();
