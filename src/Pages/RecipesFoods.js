@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -11,18 +11,18 @@ export default function RecipesFoods() {
   const { food, setFood } = useContext(MyContext);
   const showMaxRecipes = 12;
 
-  const getFood = async () => {
+  const getFood = useCallback(() => async () => {
     const URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
     const response = await fetch(URL);
     const json = await response.json();
     setFood(json.meals);
-  };
+  }, [setFood]);
 
   useEffect(() => {
-    if (food.length === 0) {
-      getFood();
-    }
-  }, [food]);
+    // if (food.length === 0) {
+    getFood();
+    // }
+  }, [getFood]);
 
   return (
     <div>

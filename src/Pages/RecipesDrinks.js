@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -10,18 +10,18 @@ export default function RecipesDrinks() {
   const { drink, setDrink } = useContext(MyContext);
   const showMaxRecipes = 12;
 
-  const getDrink = async () => {
+  const getDrink = useCallback(() => async () => {
     const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     const response = await fetch(URL);
     const json = await response.json();
     setDrink(json.drinks);
-  };
+  }, [setDrink]);
 
   useEffect(() => {
-    if (drink.length === 0) {
-      getDrink();
-    }
-  }, [drink]);
+    // if (drink.length === 0) {
+    getDrink();
+    // }
+  }, [drink, getDrink]);
 
   return (
     <div>
